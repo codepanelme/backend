@@ -1,0 +1,20 @@
+{
+  "name": "codepanel",
+  "version": "0.1.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codepanelme/backend.git"
+  },
+  "author": "Jalerson Lima",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/codepanelme/backend/issues"
+  },
+  "homepage": "https://codepanel.me",
+  "dependencies": {
+    "aws-sdk": "^2.361.0",
+    "bluebird": "^3.5.3",
+    "uuid": "^3.3.2"
+  }
+}
