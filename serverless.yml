@@ -67,7 +67,7 @@ provider:
 
 functions:
   github:
-    handler: github.webhook
+    handler: webhooks.github
     memorySize: 128
     events:
       - http:
