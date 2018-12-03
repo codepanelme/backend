@@ -19,10 +19,12 @@ service: webhooks # NOTE: update this with your service name
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: ruby2.5
   stage: dev
   region: eu-central-1
   profile: codepanel
+  stackName: codepanel
+  apiName: webhooks
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -67,17 +69,13 @@ provider:
 
 functions:
   github:
-    handler: webhooks.github
+    handler: github.handler
     memorySize: 128
+    timeout: 15
     events:
       - http:
           path: webhooks/github
           method: post
-          cloudwatchLog: /aws/lambda/webhooks/github
-      - http:
-          path: webhooks/github
-          method: get
-          cloudwatchLog: /aws/lambda/webhooks/github
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
@@ -143,4 +141,4 @@ resources:
           WriteCapacityUnits: 1
         StreamSpecification:
           StreamViewType: "NEW_AND_OLD_IMAGES"
-        TableName: github_webhook_data
+        TableName: github_events
