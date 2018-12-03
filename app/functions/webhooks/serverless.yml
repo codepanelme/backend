@@ -71,7 +71,7 @@ functions:
   github:
     handler: github.handler
     memorySize: 128
-    timeout: 15
+    timeout: 10
     events:
       - http:
           path: webhooks/github
