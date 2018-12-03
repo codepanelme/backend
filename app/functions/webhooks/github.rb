@@ -2,7 +2,7 @@ require 'aws-sdk-dynamodb'
 require 'json'
 
 class GithubEvent
-  attr_accessor :id, :event, :payload, :created_at, :updated_at
+  attr_accessor :id, :event, :payload, :processed, :created_at, :updated_at
 
   def self.build(event)
     github_event = GithubEvent.new
@@ -11,6 +11,7 @@ class GithubEvent
     github_event.id = event['headers']['X-GitHub-Delivery']
     github_event.event = event['headers']['X-GitHub-Event']
     github_event.payload = JSON.parse(event['body'])
+    github_event.processed = false
     github_event.created_at = now
     github_event.updated_at = now
 
@@ -34,6 +35,7 @@ class GithubEvent
         id: id,
         event: event,
         payload: compact_recursively(payload),
+        processed: processed,
         created_at: created_at,
         updated_at: updated_at
       }
