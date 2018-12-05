@@ -69,7 +69,7 @@ provider:
 
 functions:
   github:
-    handler: github.handler
+    handler: app/functions/github.handler
     memorySize: 128
     timeout: 10
     events:
