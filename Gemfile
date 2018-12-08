@@ -8,6 +8,7 @@ gem 'aws-sdk', '~> 3'
 
 group :development do
   gem 'rubocop'
+  gem 'rubocop-rspec'
   gem 'rspec'
   gem 'byebug'
   gem 'rake'
