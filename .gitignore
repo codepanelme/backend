@@ -52,3 +52,5 @@ build-iPhoneSimulator/
 .serverless
 .bundle
 vendor
+.byebug_history
+.DS_Store
