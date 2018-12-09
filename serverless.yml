@@ -59,17 +59,19 @@ provider:
 #    variable1: value1
 
 # you can add packaging information here
-#package:
+package:
 #  include:
 #    - include-me.js
 #    - include-me-dir/**
-#  exclude:
-#    - exclude-me.js
-#    - exclude-me-dir/**
+  exclude:
+    - Gemfile
+    - Gemfile.lock
+    - Rakefile
+    - spec/**
 
 functions:
   github:
-    handler: app/functions/github.handler
+    handler: app/functions/github.Webhooks::Github.handler
     memorySize: 128
     timeout: 10
     events:
@@ -131,7 +133,7 @@ resources:
         AttributeDefinitions:
           -
             AttributeName: "id"
-            AttributeType: "S"   
+            AttributeType: "S"
         KeySchema:
           -
             AttributeName: "id"
