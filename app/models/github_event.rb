@@ -44,13 +44,13 @@ module Webhooks
     end
 
     def save!
-      puts "Saving Github Event: #{to_h}"
+      Log.info "Saving Github Event: #{to_h}"
       dynamo = Aws::DynamoDB::Client.new(region: 'eu-central-1')
       dynamo.put_item(to_h)
-      puts 'Github Event successfuly saved'
+      Log.info 'Github Event successfuly saved'
       true
     rescue => error
-      puts "Unable to save GithubEvent: #{error.message}"
+      Log.warn "Unable to save GithubEvent: #{error.message}"
       false
     end
   end
