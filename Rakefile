@@ -5,7 +5,7 @@ task :deploy do
   puts 'done!'
 
   puts 'Downloading dependencies... '
-  if system 'bundle install --deployment --without test development'
+  if system 'bundle install --path vendor/bundle --without test development'
     puts 'Downloading dependencies... done!'
 
     puts 'Building and deploying... '
@@ -13,7 +13,7 @@ task :deploy do
     puts 'Building and deploying... done!'
 
     print 'Unlocking Gemfile... '
-    system 'bundle install --quiet --no-deployment --with test development'
+    # system 'bundle install --quiet --with test development'
     puts 'done!'
   end
 end
