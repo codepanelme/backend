@@ -1,5 +1,7 @@
 
-task :deploy do
+task :deploy, [:stage] do |stage|
+  stage = stage || 'dev'
+
   print 'Removing vendor folder... '
   system 'rm -Rf vendor'
   puts 'done!'
@@ -9,11 +11,11 @@ task :deploy do
     puts 'Downloading dependencies... done!'
 
     puts 'Building and deploying... '
-    system 'sls deploy'
+    system "sls deploy --stage #{stage}"
     puts 'Building and deploying... done!'
 
     print 'Unlocking Gemfile... '
-    # system 'bundle install --quiet --with test development'
+    system 'bundle install --quiet --with test development'
     puts 'done!'
   end
 end
