@@ -1,6 +1,7 @@
 
-task :deploy, [:stage] do |stage|
-  stage = stage || 'dev'
+task :deploy do
+  stage = ENV['stage'].nil? ? 'dev' : ENV['stage']
+  puts "Deploying to #{stage}..."
 
   print 'Removing vendor folder... '
   system 'rm -Rf vendor'
