@@ -1,5 +1,6 @@
 require 'aws-sdk-dynamodb'
 require 'json'
+require 'logging/log'
 
 module Webhooks
   class GithubEvent
